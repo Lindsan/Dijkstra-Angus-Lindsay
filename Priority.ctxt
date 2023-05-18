@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=Priority
+comment0.text=\r\n\ demponstrates\ priority\ queues\r\n\r\n\ Angus\ Lindsay\r\n\ 31/03/23\r\n
+comment1.params=
+comment1.target=Priority()
+comment2.params=name\ high
+comment2.target=void\ enqueue(Element,\ boolean)
+comment3.params=
+comment3.target=java.lang.String\ dequeue()
+comment4.params=
+comment4.target=boolean\ queueEmpty()
+numComments=5
