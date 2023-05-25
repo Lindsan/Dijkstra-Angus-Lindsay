@@ -1,7 +1,11 @@
+/**
+ * This contains the nodes and calculates the minimum distance
+ *
+ * @Angus Lindsay
+ * @25/5/2023
+ */
 import java.util.*;
-
 import java.util.HashMap; // Import the HashSet class
-
 public class Node {
     
     private String name;
@@ -58,8 +62,7 @@ public class Node {
         return lowestDistanceNode;
     }
     
-    private static void CalculateMinimumDistance(Node evaluationNode,
-  Integer edgeWeigh, Node sourceNode) {
+    private static void CalculateMinimumDistance(Node evaluationNode, Integer edgeWeigh, Node sourceNode) {
     Integer sourceDistance = sourceNode.getDistance();
     if (sourceDistance + edgeWeigh < evaluationNode.getDistance()) {
         evaluationNode.setDistance(sourceDistance + edgeWeigh);

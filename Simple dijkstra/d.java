@@ -1,4 +1,4 @@
-import java.util.*;
+
 /**
  * This has all the data for the algorythm to read
  *
