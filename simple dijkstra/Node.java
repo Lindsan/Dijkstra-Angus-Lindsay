@@ -1,3 +1,9 @@
+/**
+ * This calculates the minimum distance
+ *
+ * @Angus Lindsay
+ * @25/5/2023
+ */
 import java.util.*;
 
 public class Node {
@@ -61,7 +67,7 @@ public class Node {
         }
     }
 
-    // Getters and Setters
+    // Getting stuff
     public String getName() {
         return name;
     }

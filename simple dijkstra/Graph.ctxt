@@ -1,5 +1,9 @@
 #BlueJ class context
 comment0.target=Graph
-comment1.params=nodeA
+comment1.params=node
 comment1.target=void\ addNode(Node)
-numComments=2
+comment2.params=
+comment2.target=java.util.Set\ getNodes()
+comment3.params=name
+comment3.target=Node\ getNode(java.lang.String)
+numComments=4
