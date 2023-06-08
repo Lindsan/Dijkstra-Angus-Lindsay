@@ -1,3 +1,9 @@
+/**
+ * 
+ *
+ * @Angus Lindsay
+ * @6/6/2023
+ */
 import java.util.Scanner;
 import java.io.IOException;
 import java.io.File;
@@ -39,9 +45,7 @@ public class ReadCSV {
             System.out.println(e);
         }
 
-        System.out.println("The first column read");
-        for (int i = 0; i < lineCount; i++)
-            System.out.println(allLinesAllElements[i][0]);
+        
 
         // Create nodes and graph based on the read data
         Graph graph = new Graph();
@@ -72,12 +76,12 @@ public class ReadCSV {
             }
         }
 
-        // Calculate and print shortest paths
+        // Print shortest paths
         Node.calculateShortestPathFromSource(graph.getNode("A"));
         for (Node node : graph.getNodes()) {
-            System.out.println("Shortest Path from A to " + node.getName() + ": " + node.getShortestPath());
+            System.out.println("Shortest Path from A to " + node.getName());
             System.out.println("Distance: " + node.getDistance());
-            System.out.println("---------------------------");
+            System.out.println();
         }
     }
 
