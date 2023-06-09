@@ -1,8 +1,8 @@
 /**
- * This calculates the minimum distance
+ * 
  *
  * @Angus Lindsay
- * @6/6/2023
+ * @10/6/2023
  */
 import java.util.*;
 

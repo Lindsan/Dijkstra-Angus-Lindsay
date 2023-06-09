@@ -2,9 +2,8 @@
  * 
  *
  * @Angus Lindsay
- * @6/6/2023
+ * @10/6/2023
  */
-
 import java.util.*;
 
 public class Graph {
@@ -25,5 +24,9 @@ public class Graph {
             }
         }
         return null;
+    }
+
+    public int getNodeCount() {
+        return nodes.size();
     }
 }

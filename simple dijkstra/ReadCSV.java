@@ -2,7 +2,7 @@
  * 
  *
  * @Angus Lindsay
- * @6/6/2023
+ * @10/6/2023
  */
 import java.util.Scanner;
 import java.io.IOException;
@@ -12,7 +12,7 @@ public class ReadCSV {
     private final String FILENAME = "dijkstra.txt";
     private final int MAXLINES = 100;
     private final int VALUESPERLINE = 3;
-
+    private Graph graph;
     public ReadCSV() {
         File theFile = new File(FILENAME);
         String[] csvLines = new String[MAXLINES];
@@ -44,8 +44,6 @@ public class ReadCSV {
         } catch (IOException e) {
             System.out.println(e);
         }
-
-        
 
         // Create nodes and graph based on the read data
         Graph graph = new Graph();
@@ -83,9 +81,14 @@ public class ReadCSV {
             System.out.println("Distance: " + node.getDistance());
             System.out.println();
         }
+        System.out.println("node count"+graph.getNodeCount());
+        this.graph = graph; // Assign the created graph to the field
     }
 
-    public static void main(String[] args) {
-        ReadCSV readCSV = new ReadCSV();
+    public Graph getGraph() {
+        return graph;
     }
+
+    
+    
 }
