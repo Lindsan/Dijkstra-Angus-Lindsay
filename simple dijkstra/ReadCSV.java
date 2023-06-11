@@ -1,6 +1,5 @@
 /**
  * 
- *
  * @Angus Lindsay
  * @10/6/2023
  */
@@ -9,12 +8,21 @@ import java.io.IOException;
 import java.io.File;
 
 public class ReadCSV {
-    private final String FILENAME = "dijkstra.txt";
-    private final int MAXLINES = 100;
-    private final int VALUESPERLINE = 3;
+    private  String fileName = "dijkstra.txt";
+    private  int MAXLINES = 100;
+    private  int VALUESPERLINE = 3;
     private Graph graph;
     public ReadCSV() {
-        File theFile = new File(FILENAME);
+        Scanner inputStream = new Scanner(System.in);
+        
+        //System.out.println("what is the name of the file?");
+        //String fileName= inputStream.nextLine();
+
+        System.out.println("Which node would you like to calculate the shortest path from");
+
+        String startNode= inputStream.nextLine();
+
+        File theFile = new File(fileName);
         String[] csvLines = new String[MAXLINES];
         String[][] allLinesAllElements = new String[MAXLINES][VALUESPERLINE];
         int lineCount = 0;
@@ -75,20 +83,20 @@ public class ReadCSV {
         }
 
         // Print shortest paths
-        Node.calculateShortestPathFromSource(graph.getNode("A"));
+        Node.calculateShortestPathFromSource(graph.getNode(startNode));
         for (Node node : graph.getNodes()) {
-            System.out.println("Shortest Path from A to " + node.getName());
+            System.out.println("Shortest Path from "+startNode+" to " + node.getName());
             System.out.println("Distance: " + node.getDistance());
             System.out.println();
         }
-        System.out.println("node count"+graph.getNodeCount());
+        System.out.println("node count "+graph.getNodeCount());
         this.graph = graph; // Assign the created graph to the field
+        new GUI();
     }
 
     public Graph getGraph() {
         return graph;
     }
 
-    
     
 }
