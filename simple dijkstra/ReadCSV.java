@@ -8,19 +8,21 @@ import java.io.IOException;
 import java.io.File;
 
 public class ReadCSV {
-    private  String fileName = "dijkstra.txt";
-    private  int MAXLINES = 100;
-    private  int VALUESPERLINE = 3;
+    private String fileName = "dijkstra.txt";
+    private int MAXLINES = 100;
+    private int VALUESPERLINE = 3;
     private Graph graph;
+
     public ReadCSV() {
         Scanner inputStream = new Scanner(System.in);
         
-        //System.out.println("what is the name of the file?");
-        //String fileName= inputStream.nextLine();
+        // Prompt for the name of the file
+        // System.out.println("What is the name of the file?");
+        // String fileName = inputStream.nextLine();
 
-        System.out.println("Which node would you like to calculate the shortest path from");
-
-        String startNode= inputStream.nextLine();
+        // Prompt for the node to calculate the shortest path from
+        System.out.println("Which node would you like to calculate the shortest path from?");
+        String startNode = inputStream.nextLine();
 
         File theFile = new File(fileName);
         String[] csvLines = new String[MAXLINES];
@@ -30,15 +32,19 @@ public class ReadCSV {
         try {
             Scanner reader = new Scanner(theFile);
 
+            // Read lines from the file
             while (reader.hasNextLine() && lineCount < MAXLINES) {
                 String line = reader.nextLine();
                 csvLines[lineCount] = line;
                 lineCount++;
             }
 
-            for (int i = 0; i < lineCount; i++)
+            // Print the read lines
+            for (int i = 0; i < lineCount; i++) {
                 System.out.println(csvLines[i]);
+            }
 
+            // Split lines into values
             for (int i = 0; i < lineCount; i++) {
                 String[] values = csvLines[i].split(",");
                 for (int j = 0; j < VALUESPERLINE; j++) {
@@ -85,11 +91,11 @@ public class ReadCSV {
         // Print shortest paths
         Node.calculateShortestPathFromSource(graph.getNode(startNode));
         for (Node node : graph.getNodes()) {
-            System.out.println("Shortest Path from "+startNode+" to " + node.getName());
+            System.out.println("Shortest Path from " + startNode + " to " + node.getName());
             System.out.println("Distance: " + node.getDistance());
             System.out.println();
         }
-        System.out.println("node count "+graph.getNodeCount());
+        System.out.println("Node count: " + graph.getNodeCount());
         this.graph = graph; // Assign the created graph to the field
         new GUI();
     }
@@ -97,6 +103,4 @@ public class ReadCSV {
     public Graph getGraph() {
         return graph;
     }
-
-    
 }

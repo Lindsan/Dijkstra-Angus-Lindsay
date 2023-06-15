@@ -7,6 +7,7 @@
 import java.util.*;
 
 public class Node {
+    // Represents a node in the graph.
 
     private String name;
     private List<Node> shortestPath = new LinkedList<>();
@@ -22,6 +23,8 @@ public class Node {
     }
 
     public static void calculateShortestPathFromSource(Node source) {
+        // Calculates the shortest path from the source node using Dijkstra's algorithm.
+
         source.setDistance(0);
 
         Set<Node> settledNodes = new HashSet<>();
@@ -45,6 +48,8 @@ public class Node {
     }
 
     private static Node getLowestDistanceNode(Set<Node> unsettledNodes) {
+        // Returns the node with the lowest distance value.
+
         Node lowestDistanceNode = null;
         int lowestDistance = Integer.MAX_VALUE;
         for (Node node : unsettledNodes) {
@@ -58,6 +63,8 @@ public class Node {
     }
 
     private static void calculateMinimumDistance(Node evaluationNode, Integer edgeWeight, Node sourceNode) {
+        // Calculates the minimum distance to the evaluation node.
+
         Integer sourceDistance = sourceNode.getDistance();
         if (sourceDistance + edgeWeight < evaluationNode.getDistance()) {
             evaluationNode.setDistance(sourceDistance + edgeWeight);
@@ -67,21 +74,14 @@ public class Node {
         }
     }
 
-    // Getting stuff
+    // Getters and Setters
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public List<Node> getShortestPath() {
-        return shortestPath;
-    }
-
-    public void setShortestPath(List<Node> shortestPath) {
-        this.shortestPath = shortestPath;
     }
 
     public Integer getDistance() {
@@ -98,5 +98,13 @@ public class Node {
 
     public void setAdjacentNodes(Map<Node, Integer> adjacentNodes) {
         this.adjacentNodes = adjacentNodes;
+    }
+
+    public List<Node> getShortestPath() {
+        return shortestPath;
+    }
+
+    public void setShortestPath(List<Node> shortestPath) {
+        this.shortestPath = shortestPath;
     }
 }

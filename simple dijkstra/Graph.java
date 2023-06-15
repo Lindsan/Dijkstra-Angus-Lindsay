@@ -10,23 +10,23 @@ public class Graph {
     private Set<Node> nodes = new HashSet<>();
 
     public void addNode(Node node) {
-        nodes.add(node);
+        nodes.add(node); // Adds a Node to the set of nodes.
     }
 
     public Set<Node> getNodes() {
-        return nodes;
+        return nodes; // Returns the set of nodes.
     }
 
     public Node getNode(String name) {
         for (Node node : nodes) {
             if (node.getName().equals(name)) {
-                return node;
+                return node; // Returns the Node with the specified name.
             }
         }
-        return null;
+        return null; // Returns null if no Node with the specified name is found.
     }
 
     public int getNodeCount() {
-        return nodes.size();
+        return nodes.size(); // Returns the number of nodes in the graph.
     }
 }
