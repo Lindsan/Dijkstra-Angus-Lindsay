@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=GUI
-comment1.params=
-comment1.target=GUI()
+comment1.params=graph
+comment1.target=GUI(Graph)
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ GUI\r\n
 comment2.params=g
 comment2.target=void\ paint(java.awt.Graphics)

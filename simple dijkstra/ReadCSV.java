@@ -97,7 +97,7 @@ public class ReadCSV {
         }
         System.out.println("Node count: " + graph.getNodeCount());
         this.graph = graph; // Assign the created graph to the field
-        new GUI();
+        GUI gui = new GUI(graph);
     }
 
     public Graph getGraph() {

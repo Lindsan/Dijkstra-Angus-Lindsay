@@ -7,12 +7,12 @@
 import java.util.*;
 
 public class Node {
-    // Represents a node in the graph.
-
     private String name;
     private List<Node> shortestPath = new LinkedList<>();
     private Integer distance = Integer.MAX_VALUE;
     private Map<Node, Integer> adjacentNodes = new HashMap<>();
+    private int x;
+    private int y;
 
     public void addDestination(Node destination, int distance) {
         adjacentNodes.put(destination, distance);
@@ -106,5 +106,21 @@ public class Node {
 
     public void setShortestPath(List<Node> shortestPath) {
         this.shortestPath = shortestPath;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
     }
 }

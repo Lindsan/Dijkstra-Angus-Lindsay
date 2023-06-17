@@ -8,7 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Random;
-
+import java.util.Map;
 public class GUI extends JFrame {
     // Represents the GUI for displaying the graph.
 
@@ -23,7 +23,8 @@ public class GUI extends JFrame {
     /**
      * Constructor for objects of class GUI
      */
-    public GUI() {
+    public GUI(Graph graph) {
+
         int windowX = 1100;
         int windowY = 600;
         setTitle("Dijkstra's algorithm");
@@ -49,6 +50,7 @@ public class GUI extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.pack();
         this.setVisible(true);
+        this.graph = graph; // Assign the provided graph object to the instance variable
 
         // Trigger the painting of the graphics
         repaint(); // Calls the paint method to draw the graphics.
@@ -57,15 +59,17 @@ public class GUI extends JFrame {
     public void paint(Graphics g) {
         super.paint(g);
         Graphics2D g2 = (Graphics2D) g;
-        int nodeNum =graph.getNodeCount();
         int circleSize = 30;
         char c = 'A';
+        int nodeNum = graph.getNodeCount();
 
         // Draws the nodes on the canvas.
-        for (int i = 0; i <26 ; i++) {
+        for (Node node : graph.getNodes()) {
             Random rand = new Random();
             int x = rand.nextInt(1000) + 50;
             int y = rand.nextInt(550) + 50;
+            node.setX(x);
+            node.setY(y);
             g2.setColor(Color.BLACK);
             g2.fillOval(x, y, circleSize, circleSize);
             String s = String.valueOf(c);
@@ -73,5 +77,19 @@ public class GUI extends JFrame {
             g2.drawString(s, x + (circleSize / 2), y + (circleSize / 2));
             c++;
         }
+
+        // Draws the edges (lines) between connected nodes.
+        g2.setColor(Color.BLUE);
+        for (Node node : graph.getNodes()) {
+            int startX = node.getX() + (circleSize / 2);
+            int startY = node.getY() + (circleSize / 2);
+            for (Map.Entry<Node, Integer> entry : node.getAdjacentNodes().entrySet()) {
+                Node adjacentNode = entry.getKey();
+                int endX = adjacentNode.getX() + (circleSize / 2);
+                int endY = adjacentNode.getY() + (circleSize / 2);
+                g2.drawLine(startX, startY, endX, endY);
+            }
+        }
     }
 }
+

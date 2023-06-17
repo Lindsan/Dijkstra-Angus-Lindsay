@@ -14,7 +14,7 @@ public class Data {
 
         ReadCSV readCSV = new ReadCSV(); // Creates another instance of the ReadCSV class.
         Graph graph = readCSV.getGraph(); // Retrieves the Graph object from the ReadCSV instance.
-        int nodeCount = graph.getNodeCount(); // Gets the number of nodes in the graph.
-        System.out.println("Number of nodes: " + nodeCount); // Prints the number of nodes to the console.
+        // Pass the graph object to the GUI constructor
+        
     }
 }
