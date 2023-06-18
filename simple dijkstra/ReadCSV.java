@@ -15,7 +15,7 @@ public class ReadCSV {
 
     public ReadCSV() {
         Scanner inputStream = new Scanner(System.in);
-        
+
         // Prompt for the name of the file
         // System.out.println("What is the name of the file?");
         // String fileName = inputStream.nextLine();

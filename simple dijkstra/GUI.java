@@ -74,12 +74,12 @@ public class GUI extends JFrame {
             g2.fillOval(x, y, circleSize, circleSize);
             String s = String.valueOf(c);
             g2.setColor(Color.RED);
-            g2.drawString(s, x + (circleSize / 2), y + (circleSize / 2));
+            g2.drawString(node.getName(), x + (circleSize / 2), y + (circleSize / 2));
             c++;
         }
 
         // Draws the edges (lines) between connected nodes.
-        g2.setColor(Color.BLUE);
+        g2.setColor(Color.MAGENTA);
         for (Node node : graph.getNodes()) {
             int startX = node.getX() + (circleSize / 2);
             int startY = node.getY() + (circleSize / 2);
