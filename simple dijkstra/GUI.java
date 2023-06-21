@@ -24,6 +24,7 @@ public class GUI extends JFrame {
      * Constructor for objects of class GUI
      */
     public GUI(Graph graph) {
+        this.graph = graph; // Assign the provided graph object to the instance variable
 
         int windowX = 1100;
         int windowY = 600;
@@ -60,8 +61,7 @@ public class GUI extends JFrame {
         super.paint(g);
         Graphics2D g2 = (Graphics2D) g;
         int circleSize = 30;
-        char c = 'A';
-        int nodeNum = graph.getNodeCount();
+        
 
         // Draws the nodes on the canvas.
         for (Node node : graph.getNodes()) {
@@ -72,14 +72,14 @@ public class GUI extends JFrame {
             node.setY(y);
             g2.setColor(Color.BLACK);
             g2.fillOval(x, y, circleSize, circleSize);
-            String s = String.valueOf(c);
+            
             g2.setColor(Color.RED);
             g2.drawString(node.getName(), x + (circleSize / 2), y + (circleSize / 2));
-            c++;
+            
         }
 
         // Draws the edges (lines) between connected nodes.
-        g2.setColor(Color.MAGENTA);
+        g2.setColor(Color.BLUE);
         for (Node node : graph.getNodes()) {
             int startX = node.getX() + (circleSize / 2);
             int startY = node.getY() + (circleSize / 2);
@@ -92,4 +92,6 @@ public class GUI extends JFrame {
         }
     }
 }
+
+
 

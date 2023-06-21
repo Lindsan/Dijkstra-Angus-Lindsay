@@ -15,6 +15,7 @@ public class Data {
         ReadCSV readCSV = new ReadCSV(); // Creates another instance of the ReadCSV class.
         Graph graph = readCSV.getGraph(); // Retrieves the Graph object from the ReadCSV instance.
         // Pass the graph object to the GUI constructor
-        
+        GUI gui = new GUI(graph);
     }
 }
+

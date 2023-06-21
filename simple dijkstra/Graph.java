@@ -23,6 +23,7 @@ public class Graph {
                 return node; // Returns the Node with the specified name.
             }
         }
+        
         return null; // Returns null if no Node with the specified name is found.
     }
 

@@ -60,7 +60,8 @@ public class ReadCSV {
         }
 
         // Create nodes and graph based on the read data
-        Graph graph = new Graph();
+        this.graph = new Graph();
+
 
         for (int i = 0; i < lineCount; i++) {
             String nodeName = allLinesAllElements[i][0];
