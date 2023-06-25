@@ -1,8 +1,8 @@
 /**
- * 
+ * This class serves as the entry point for the program. It creates an instance of the ReadCSV class and initializes the GUI by passing the Graph object to its constructor.
  *
  * @Angus Lindsay
- * @10/6/2023
+ * @25/6/2023
  */
 public class Data {
     public Data() {

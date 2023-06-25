@@ -1,8 +1,8 @@
 /**
  * 
- *
+ * This class provides a graphical user interface to display the graph. It extends the JFrame class and uses the Canvas class to draw the nodes and edges of the graph. It receives a Graph object in its constructor and utilizes the node and edge information to visualize the graph. 
  * @Angus Lindsay
- * @10/6/2023
+ * @25/6/2023
  */
 import javax.swing.*;
 import java.awt.*;
@@ -60,48 +60,57 @@ public class GUI extends JFrame {
     }
 
     public void paint(Graphics g) {
-    super.paint(g);
-    Graphics2D g2 = (Graphics2D) g;
-    int circleSize = 60;
+        super.paint(g);
+        Graphics2D g2 = (Graphics2D) g;
+        int circleSize = 60;
 
-    // Pre-calculate the positions of the nodes
-    for (Node node : graph.getNodes()) {
-        Random rand = new Random();
-        int x = rand.nextInt(1000) + 50;
-        int y = rand.nextInt(550) + 50;
-        node.setX(x);
-        node.setY(y);
-    }
+        // Pre-calculate the positions of the nodes
+        for (Node node : graph.getNodes()) {
+            Random rand = new Random();
+            int x = rand.nextInt(1000) + 50;
+            int y = rand.nextInt(550) + 50;
+            node.setX(x);
+            node.setY(y);
+        }
 
-    // Draws the edges (lines) between connected nodes.
-    g2.setColor(Color.BLACK);
-    for (Node node : graph.getNodes()) {
-        int startX = node.getX() + (circleSize / 2);
-        int startY = node.getY() + (circleSize / 2);
-        for (Map.Entry<Node, Integer> entry : node.getAdjacentNodes().entrySet()) {
-            Node adjacentNode = entry.getKey();
-            int endX = adjacentNode.getX() + (circleSize / 2);
-            int endY = adjacentNode.getY() + (circleSize / 2);
-            g2.setStroke(new BasicStroke(10));
-            g2.draw(new Line2D.Float(startX, startY, endX, endY));
+        // Draws the edges (lines) between connected nodes.
+        for (Node node : graph.getNodes()) {
+            int startX = node.getX() + (circleSize / 2);
+            int startY = node.getY() + (circleSize / 2);
+            for (Map.Entry<Node, Integer> entry : node.getAdjacentNodes().entrySet()) {
+                Node adjacentNode = entry.getKey();
+                int endX = adjacentNode.getX() + (circleSize / 2);
+                int endY = adjacentNode.getY() + (circleSize / 2);
+
+                // Check if the adjacentNode is part of the shortest path
+                if (node.getShortestPath().contains(adjacentNode) || adjacentNode.getShortestPath().contains(node)) {
+                    g2.setColor(Color.RED); // Set color to red for shortest path
+                } else {
+                    g2.setColor(Color.BLACK); // Set color to black for other edges
+                }
+
+                g2.setStroke(new BasicStroke(10));
+                g2.draw(new Line2D.Float(startX, startY, endX, endY));
+            }
+        }
+
+        // Draws the nodes on the canvas.
+        for (Node node : graph.getNodes()) {
+            int x = node.getX();
+            int y = node.getY();
+
+            if (node.getDistance() == 0) {
+                g2.setColor(Color.RED); // Set color to red for the starting node
+            } else {
+                g2.setColor(Color.BLACK); // Set color to black for other nodes
+            }
+
+            g2.fillOval(x, y, circleSize, circleSize);
+
+            g2.setColor(Color.WHITE);
+            g2.drawString(node.getName(), x + 10, y + (circleSize / 2));
         }
     }
-
-    // Draws the nodes on the canvas.
-    for (Node node : graph.getNodes()) {
-        g2.setColor(Color.BLACK);
-        int x = node.getX();
-        int y = node.getY();
-        g2.fillOval(x, y, circleSize, circleSize);
-
-        g2.setColor(Color.WHITE);
-        g2.drawString(node.getName(), x + 10, y + (circleSize / 2));
-    }
 }
-
-
-}
-
-
 
 
