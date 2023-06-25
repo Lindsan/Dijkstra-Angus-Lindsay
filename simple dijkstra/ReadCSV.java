@@ -1,5 +1,7 @@
 /**
- * This class is responsible for reading data from a CSV file and constructing the Graph object based on the read data. It prompts for user input to specify the starting node, calculates the shortest paths using Dijkstra's algorithm, and displays the results. It also initializes the GUI by passing the Graph object to its constructor.
+ * This class is responsible for reading data from a CSV file and constructing the Graph object based on the read data. 
+ * It prompts for user input to specify the starting node, calculates the shortest paths using Dijkstra's algorithm, and displays the results. 
+ * It also initializes the GUI by passing the Graph object to its constructor.
  * @Angus Lindsay
  * @25/6/2023
  */

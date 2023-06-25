@@ -1,5 +1,12 @@
 /**
- * This class represents a node in the graph. It stores information such as the node's name, its adjacent nodes with their corresponding distances, the shortest path from the source node, and the distance from the source node. It also provides methods for adding destinations, calculating the shortest paths using Dijkstra's algorithm, and accessing various properties of the node.
+ * This class represents a node in the graph.
+ * It stores information such as the node's name,
+ * its adjacent nodes with their corresponding distances,
+ * the shortest path from the source node,
+ * and the distance from the source node.
+ * It also provides methods for adding destinations,
+ * calculating the shortest paths using Dijkstra's algorithm,
+ * and accessing various properties of the node.
  *
  * @Angus Lindsay
  * @25/6/2023

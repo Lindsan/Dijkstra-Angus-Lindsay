@@ -1,5 +1,7 @@
 /**
- * This class represents a graph data structure. It stores a set of Node objects and provides methods to add nodes, retrieve nodes by name, and get the total count of nodes in the graph.
+ * This class represents a graph data structure. 
+ * It stores a set of Node objects and provides methods to add nodes,
+ * retrieve nodes by name, and get the total count of nodes in the graph.
  *
  * @Angus Lindsay
  * @25/6/2023
