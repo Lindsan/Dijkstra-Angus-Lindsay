@@ -81,6 +81,7 @@ public class Node {
         }
     }
 
+
     // Getters and Setters
 
     public String getName() {
@@ -131,6 +132,3 @@ public class Node {
         this.y = y;
     }
 }
-
-
-

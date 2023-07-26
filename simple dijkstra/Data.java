@@ -1,5 +1,5 @@
 /**
- * This class serves as the entry point for the program. 
+ * This class serves as the entry point for the program.
  * It creates an instance of the ReadCSV class and initializes the GUI by passing the Graph object to its constructor.
  *
  * @Angus Lindsay
@@ -19,4 +19,3 @@ public class Data {
         GUI gui = new GUI(graph);
     }
 }
-

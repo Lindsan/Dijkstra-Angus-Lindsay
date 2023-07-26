@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Data
-comment0.text=\r\n\ This\ class\ serves\ as\ the\ entry\ point\ for\ the\ program.\ \r\n\ It\ creates\ an\ instance\ of\ the\ ReadCSV\ class\ and\ initializes\ the\ GUI\ by\ passing\ the\ Graph\ object\ to\ its\ constructor.\r\n\r\n\ @Angus\ Lindsay\r\n\ @25/6/2023\r\n
+comment0.text=\r\n\ This\ class\ serves\ as\ the\ entry\ point\ for\ the\ program.\r\n\ It\ creates\ an\ instance\ of\ the\ ReadCSV\ class\ and\ initializes\ the\ GUI\ by\ passing\ the\ Graph\ object\ to\ its\ constructor.\r\n\r\n\ @Angus\ Lindsay\r\n\ @25/6/2023\r\n
 comment1.params=
 comment1.target=Data()
 comment2.params=args

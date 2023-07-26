@@ -1,5 +1,5 @@
 /**
- * This class represents a graph data structure. 
+ * This class represents a graph data structure.
  * It stores a set of Node objects and provides methods to add nodes,
  * retrieve nodes by name, and get the total count of nodes in the graph.
  *
@@ -25,7 +25,7 @@ public class Graph {
                 return node; // Returns the Node with the specified name.
             }
         }
-        
+
         return null; // Returns null if no Node with the specified name is found.
     }
 

@@ -1,8 +1,7 @@
 /**
- * 
  * This class provides a graphical user interface to display the graph.
  * It extends the JFrame class and uses the Canvas class to draw the nodes and edges of the graph.
- * It receives a Graph object in its constructor and utilizes the node and edge information to visualize the graph. 
+ * It receives a Graph object in its constructor and utilizes the node and edge information to visualize the graph.
  * @Angus Lindsay
  * @25/6/2023
  */
@@ -14,9 +13,7 @@ import java.util.Map;
 import java.awt.geom.Line2D;
 
 public class GUI extends JFrame {
-    // Represents the GUI for displaying the graph.
 
-    // instance variables
     // instance variables
     JMenuBar menuBar;
     JMenu menu;
@@ -25,13 +22,13 @@ public class GUI extends JFrame {
     private Graph graph; // Reference to the Graph object
     int WINDOWX = 1100;
     int WINDOWY = 600;
+
     /**
      * Constructor for objects of class GUI
      */
     public GUI(Graph graph) {
         this.graph = graph; // Assign the provided graph object to the instance variable
 
-        
         setTitle("Dijkstra's algorithm");
         this.getContentPane().setPreferredSize(new Dimension(WINDOWX, WINDOWY));
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -59,6 +56,8 @@ public class GUI extends JFrame {
 
         // Trigger the painting of the graphics
         repaint(); // Calls the paint method to draw the graphics.
+
+
     }
 
     public void paint(Graphics g) {
@@ -69,16 +68,16 @@ public class GUI extends JFrame {
         // Pre-calculate the positions of the nodes
         for (Node node : graph.getNodes()) {
             Random rand = new Random();
-            int x = rand.nextInt(WINDOWX-50) + 50;//sets the node x and y position and adds 50 so the nodes arent right on the border of the GUI window
-            
-            int y = rand.nextInt(WINDOWY-50) + 50;//sets the node x and y position and adds 50 so the nodes arent right on the border of the GUI window
+            int x = rand.nextInt(WINDOWX - 50) + 50;//sets the node x and y position and adds 50 so the nodes aren't right on the border of the GUI window
+
+            int y = rand.nextInt(WINDOWY - 50) + 50;//sets the node x and y position and adds 50 so the nodes aren't right on the border of the GUI window
             node.setX(x);
             node.setY(y);
         }
 
         // Draws the edges (lines) between connected nodes.
         for (Node node : graph.getNodes()) {
-            int startX = node.getX() + (CIRCLESIZE / 2);//CIRCLESIZE/2 so that it starts in the centre of the node
+            int startX = node.getX() + (CIRCLESIZE / 2);//CIRCLESIZE/2 so that it starts in the center of the node
             int startY = node.getY() + (CIRCLESIZE / 2);
             for (Map.Entry<Node, Integer> entry : node.getAdjacentNodes().entrySet()) {
                 Node adjacentNode = entry.getKey();
@@ -111,9 +110,9 @@ public class GUI extends JFrame {
             g2.fillOval(x, y, CIRCLESIZE, CIRCLESIZE);
 
             g2.setColor(Color.WHITE);
-            g2.drawString(node.getName(), x + 10, y + (CIRCLESIZE / 2)); //adds 10 so the name isnt written in the start of the circle and hard to read
+            g2.drawString(node.getName(), x + 10, y + (CIRCLESIZE / 2)); //adds 10 so the name isn't written in the start of the circle and hard to read
         }
+
+        //g2.drawString("This is gonna be awesome",70,20);
     }
 }
-
-
