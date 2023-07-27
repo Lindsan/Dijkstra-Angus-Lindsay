@@ -2,7 +2,8 @@
 comment0.target=GUI
 comment1.params=graph
 comment1.target=GUI(Graph)
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ GUI\r\n
-comment2.params=g
-comment2.target=void\ paint(java.awt.Graphics)
-numComments=3
+comment2.params=e
+comment2.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment3.params=g
+comment3.target=void\ paint(java.awt.Graphics)
+numComments=4

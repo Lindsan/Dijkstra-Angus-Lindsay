@@ -23,9 +23,6 @@ public class GUI extends JFrame {
     int WINDOWX = 1100;
     int WINDOWY = 600;
 
-    /**
-     * Constructor for objects of class GUI
-     */
     public GUI(Graph graph) {
         this.graph = graph; // Assign the provided graph object to the instance variable
 
@@ -46,6 +43,15 @@ public class GUI extends JFrame {
         menu = new JMenu("Menu");
         menuBar.add(menu);
 
+        // Add quit menu item
+        menuItem = new JMenuItem("Quit");
+        menu.add(menuItem);
+        menuItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0); // Exit the application when "Quit" is selected
+            }
+        });
+
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         this.getContentPane().setPreferredSize(new Dimension(WINDOWX, WINDOWY));
         this.getContentPane().setLayout(null);
@@ -56,8 +62,6 @@ public class GUI extends JFrame {
 
         // Trigger the painting of the graphics
         repaint(); // Calls the paint method to draw the graphics.
-
-
     }
 
     public void paint(Graphics g) {
