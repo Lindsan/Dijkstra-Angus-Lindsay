@@ -43,14 +43,93 @@ public class GUI extends JFrame {
         menu = new JMenu("Menu");
         menuBar.add(menu);
 
+        
+        // Add "Add Node" menu item
+        menuItem = new JMenuItem("Add Node");
+        menu.add(menuItem);
+        menuItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Prompt the user for the name of the new node using JOptionPane
+                String nodeName = JOptionPane.showInputDialog(null, "Enter the name of the new node:");
+                if (nodeName != null && !nodeName.isEmpty()) {
+                    // Create a new Node instance with the given name
+                    Node newNode = new Node(nodeName);
+                    // Add the new node to the graph
+                    graph.addNode(newNode);
+                    // Repaint the GUI to reflect the changes
+                    repaint();
+                }
+            }
+        });
+
+        // Add "Remove Node" menu item
+        menuItem = new JMenuItem("Remove Node");
+        menu.add(menuItem);
+        menuItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Prompt the user for the name of the node to remove using JOptionPane
+                String nodeName = JOptionPane.showInputDialog(null, "Enter the name of the node to remove:");
+                if (nodeName != null && !nodeName.isEmpty()) {
+                    // Get the Node instance corresponding to the given name
+                    Node nodeToRemove = graph.getNode(nodeName);
+                    if (nodeToRemove != null) {
+                        // Remove the node from the graph
+                        graph.getNodes().remove(nodeToRemove);
+                        // Remove any edges involving the removed node
+                        for (Node node : graph.getNodes()) {
+                            node.getAdjacentNodes().remove(nodeToRemove);
+                        }
+                        // Repaint the GUI to reflect the changes
+                        repaint();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Node not found in the graph!");
+                    }
+                }
+            }
+        });
+
+        // Add "Change Weight" menu item
+        menuItem = new JMenuItem("Change Weight");
+        menu.add(menuItem);
+        menuItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Prompt the user for the names of the source and destination nodes, and the new weight
+                String sourceNodeName = JOptionPane.showInputDialog(null, "Enter the name of the source node:");
+                String destinationNodeName = JOptionPane.showInputDialog(null, "Enter the name of the destination node:");
+                String weightStr = JOptionPane.showInputDialog(null, "Enter the new weight between the nodes:");
+                
+                if (sourceNodeName != null && !sourceNodeName.isEmpty() &&
+                    destinationNodeName != null && !destinationNodeName.isEmpty() &&
+                    weightStr != null && !weightStr.isEmpty()) {
+                    // Get the Node instances corresponding to the given names
+                    Node sourceNode = graph.getNode(sourceNodeName);
+                    Node destinationNode = graph.getNode(destinationNodeName);
+                    if (sourceNode != null && destinationNode != null) {
+                        try {
+                            // Convert the input weight to an integer
+                            int newWeight = Integer.parseInt(weightStr);
+                            // Update the edge weight between the source and destination nodes
+                            sourceNode.addDestination(destinationNode, newWeight);
+                            destinationNode.addDestination(sourceNode, newWeight);
+                            // Repaint the GUI to reflect the changes
+                            repaint();
+                        } catch (NumberFormatException ex) {
+                            JOptionPane.showMessageDialog(null, "Invalid weight format! Please enter a valid integer.");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "One or both nodes not found in the graph!");
+                    }
+                }
+            }
+        });
         // Add quit menu item
         menuItem = new JMenuItem("Quit");
         menu.add(menuItem);
         menuItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0); // Exit the application when "Quit" is selected
-            }
-        });
+                public void actionPerformed(ActionEvent e) {
+                    System.exit(0); // Exit the application when "Quit" is selected
+                }
+            });
 
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         this.getContentPane().setPreferredSize(new Dimension(WINDOWX, WINDOWY));
@@ -68,7 +147,7 @@ public class GUI extends JFrame {
         super.paint(g);
         Graphics2D g2 = (Graphics2D) g;
         int CIRCLESIZE = 60;
-
+        int lineWidth=5;
         // Pre-calculate the positions of the nodes
         for (Node node : graph.getNodes()) {
             Random rand = new Random();
@@ -95,7 +174,7 @@ public class GUI extends JFrame {
                     g2.setColor(Color.BLACK); // Set color to black for other edges
                 }
 
-                g2.setStroke(new BasicStroke(5));//line width
+                g2.setStroke(new BasicStroke(lineWidth));//line width
                 g2.draw(new Line2D.Float(startX, startY, endX, endY));
             }
         }

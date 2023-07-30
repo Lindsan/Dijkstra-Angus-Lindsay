@@ -8,6 +8,7 @@
 import java.util.Scanner;
 import java.io.IOException;
 import java.io.File;
+import java.io.FileNotFoundException;
 
 public class ReadCSV {
     private String fileName = "dijkstra.txt";
@@ -18,19 +19,14 @@ public class ReadCSV {
     public ReadCSV() {
         Scanner inputStream = new Scanner(System.in);
 
-        // Prompt for the name of the file
-        // System.out.println("What is the name of the file?");
-        // String fileName = inputStream.nextLine();
-
         // Prompt for the node to calculate the shortest path from
         System.out.println("Which node would you like to calculate the shortest path from?");
-        String startNode = inputStream.nextLine();
+        String startNodeName = inputStream.nextLine();
 
         File theFile = new File(fileName);
         String[] csvLines = new String[MAXLINES];
         String[][] allLinesAllElements = new String[MAXLINES][VALUESPERLINE];
         int lineCount = 0;
-
 
         try {
             Scanner reader = new Scanner(theFile);
@@ -57,14 +53,13 @@ public class ReadCSV {
                         allLinesAllElements[i][j] = "";
                 }
             }
-
-        } catch (IOException e) {
-            System.out.println(e);
+        } catch (FileNotFoundException e) {
+            System.out.println("Error: The file '" + fileName + "' was not found.");
+            return; // Exit the method if the file is not found
         }
 
         // Create nodes and graph based on the read data
         this.graph = new Graph();
-
 
         for (int i = 0; i < lineCount; i++) {
             String nodeName = allLinesAllElements[i][0];
@@ -78,7 +73,13 @@ public class ReadCSV {
             for (int j = 1; j < VALUESPERLINE; j += 2) {
                 if (!allLinesAllElements[i][j].isEmpty() && !allLinesAllElements[i][j + 1].isEmpty()) {
                     String destinationName = allLinesAllElements[i][j];
-                    int distance = Integer.parseInt(allLinesAllElements[i][j + 1]);
+                    int distance;
+                    try {
+                        distance = Integer.parseInt(allLinesAllElements[i][j + 1]);
+                    } catch (NumberFormatException ex) {
+                        System.out.println("Error: Invalid distance value for node " + nodeName);
+                        continue; // Skip this destination and move to the next one
+                    }
 
                     Node destination = graph.getNode(destinationName);
                     if (destination == null) {
@@ -92,10 +93,16 @@ public class ReadCSV {
             }
         }
 
+        Node startNode = graph.getNode(startNodeName);
+        if (startNode == null) {
+            System.out.println("Error: Node '" + startNodeName + "' does not exist in the graph.");
+            return; // Exit the method if the start node is not found in the graph
+        }
+
         // Print shortest paths
-        Node.calculateShortestPathFromSource(graph.getNode(startNode));
+        Node.calculateShortestPathFromSource(startNode);
         for (Node node : graph.getNodes()) {
-            System.out.println("Shortest Path from " + startNode + " to " + node.getName());
+            System.out.println("Shortest Path from " + startNodeName + " to " + node.getName());
             System.out.println("Distance: " + node.getDistance());
             System.out.println();
         }
